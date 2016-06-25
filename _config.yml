@@ -1,0 +1,16 @@
+url: http://www.elegancetse.com
+title: Wiki · Elegancetse Tse
+keywords: wiki, makrdown, linux, python, ops, simiki
+description: "Stay hungry,Stay foolish."
+author: Elegancetse Tse
+theme: yasimple_x2
+
+category:
+  - name: linux
+    label: Linux/运维
+
+##### Deploy #####
+deploy:
+  - type: git
+    remote: origin
+    branch: gh-pages
