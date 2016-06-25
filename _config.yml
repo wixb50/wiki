@@ -5,6 +5,8 @@ description: "Stay hungry,Stay foolish."
 author: Elegancetse Tse
 theme: yasimple_x2
 
+root: /wiki/
+
 category:
   - name: linux
     label: Linux/运维
