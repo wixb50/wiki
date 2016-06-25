@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>sar - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/#tool">tool</a>
+    &nbsp;&#187;&nbsp;sar
+    <span class="updated">Updated&nbsp;
+    2013-08-17 07:32
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <p>Sar commands comes with the sysstat package. Make sure sysstat is installed. If you don’t have sar installed on your system, get it from Sysstat project.</p>
+<p>Sar is an excellent monitoring tool that displays performance data of pretty much every resource of the system including CPU, memory, IO, paging, networking, interrupts etc.,</p>
+<p>Sar Collects, Reports (displays) and Saves the performance data.</p>
+<p>直接使用 <code>sar</code> 命令会报错:</p>
+<blockquote>
+<p>Cannot open /var/log/sa/sa05: No such file or directory</p>
+</blockquote>
+<p>开启 <code>sysstat</code> 服务解决, <a href="http://forums.gentoo.org/viewtopic-t-641960-view-next.html?sid=fd20b938e3904492b2f865039f250625">参考</a></p>
+<div class="hlcode"><pre><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">systat</span> <span class="n">start</span>
+</pre></div>
+
+
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="http://www.thegeekstuff.com/2011/03/sar-examples/">10 Useful Sar (Sysstat) Examples for UNIX / Linux Performance Monitoring</a></li>
+<li><a href="http://www.hosting.com/support/linux/using-sar-to-monitor-system-performance">Using sar to Monitor System Performance</a></li>
+<li><a href="http://linux.101hacks.com/monitoring-performance/sar-command-examples/">Hack 96. Sar Command Examples</a></li>
+<li><a href="http://www.inmotionhosting.com/support/website/general-server-setup/using-the-linux-sar-command">Using the Linux sar command</a></li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2016 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2016-06-25 12:28:19</p>
+      </div> <!-- end footer-right -->
+    </div>
+  </body>
+</html>

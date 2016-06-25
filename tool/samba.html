@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>samba - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/#tool">tool</a>
+    &nbsp;&#187;&nbsp;samba
+    <span class="updated">Updated&nbsp;
+    2013-08-17 07:36
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <h2 id="samba">SAMBA</h2>
+<h2 id="installation">Installation</h2>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">emerge</span> <span class="n">net</span><span class="o">-</span><span class="n">fs</span><span class="o">/</span><span class="n">samba</span>
+</pre></div>
+
+
+<h2 id="about">About</h2>
+<p>NFS、CIFS？</p>
+<p>Samba是用来让Unix系列的操作系统和微软Windows操作系统的SMB/CIFS（Server Message Block/Common Internet File System）网络协议做连接的自由软件</p>
+<p>Samba是架构在NetBIOS（Network Basic Input/Output System）这个通信协议上面开发出来的。NetBIOS是无法跨路由的，但是现在又NetBIOS over TCP/IP技术可以实现。目前Samba还是广泛用于LAN中。</p>
+<p><a href="http://www.samba.org">官方网站传送门</a></p>
+<h2 id="configuration">Configuration</h2>
+<div class="hlcode"><pre><span class="cp"># TODO</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">samba</span>
+<span class="cp"># the is a smb.conf.default in the dir</span>
+<span class="n">sudo</span> <span class="n">cp</span> <span class="n">smb</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="k">default</span> <span class="n">smb</span><span class="p">.</span><span class="n">conf</span>
+<span class="n">vim</span> <span class="n">smb</span><span class="p">.</span><span class="n">conf</span>
+<span class="cp"># edit the [global] section</span>
+<span class="cp"># workgroup is the windows pc&#39;s workgroup name</span>
+<span class="cp"># security can be user or shareo</span>
+<span class="cp"># in the end, you can uncomment the [tmp] section</span>
+</pre></div>
+
+
+<p>修改完smb.conf后，可以用testparm命令来检查配置文件的语法合法性</p>
+<h2 id="start-service">Start Service</h2>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">samba</span> <span class="n">start</span>
+</pre></div>
+
+
+<h2 id="read-more">Read More</h2>
+<ul>
+<li><a href="http://www.cnblogs.com/whiteyun/archive/2011/05/27/2059670.html">Linux中Samba详细安装</a></li>
+<li><a href="http://bbs.chinaunix.net/thread-716599-1-1.html">samba安装和配置文档以及和域控制器配合部分</a></li>
+<li><a href="http://bbs.chinaunix.net/thread-1003730-1-1.html">快速搭建Samba服务器</a></li>
+<li><a href="http://bbs.chinaunix.net/thread-1148734-1-1.html">一步一学Linux与Windows 共享文件Samba</a></li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2016 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2016-06-25 12:28:19</p>
+      </div> <!-- end footer-right -->
+    </div>
+  </body>
+</html>
