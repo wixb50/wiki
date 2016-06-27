@@ -26,7 +26,29 @@ collection: "虚拟化"
 
 那个时候docker官网的域名还是docker.io, 现在已经把docker.com拿下了, 变化还是挺大的.
 
+## 安装 ##
+
+```
+curl -sSL https://get.docker.com/ | sh
+```
+
 ## 遇到的问题 ##
+
+### Docker容器内不能访问外网 ###
+
+编辑系统网络配置
+
+```
+$ sudo gedit /etc/NetworkManager/NetworkManager.conf
+```
+注释以下行后重启
+
+```
+#dns=dnsmasq
+
+$ sudo /etc/init.d/network-manager restart
+```
+
 
 ## loop module ##
 
@@ -89,6 +111,13 @@ Gentoo下安装docker后启动报错, 看日志:
 就顺便一起重新编译内核了.
 
 官方也提供了内核参数检查的脚本 [docker/contrib/check-config.sh](https://github.com/docker/docker/blob/master/contrib/check-config.sh)
+
+## 更改docker数据存储目录 ##
+
+docker的默认存储路径为`/var/lib/docker`，但是有时候想更改目录：
+
++ Ubuntu/Debian:编辑`/etc/default/docker`文件，更改`DOCKER_OPTS="-dns 8.8.8.8 -dns 8.8.4.4 -g /mnt"`为目录.
++ Fedora/Centos: 编辑`/etc/sysconfig/docker`文件，更改参数为`other_args="-g /var/lib/testdir"`.
 
 ## 一些链接 ##
 
