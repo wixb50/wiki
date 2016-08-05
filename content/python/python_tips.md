@@ -1,7 +1,7 @@
 ---
 title: "Python Tips"
 date: 2016-02-06 22:00
-updated: 2016-04-18 11:40
+updated: 2016-08-05 11:40
 description: "Python查漏补缺, 或收集一些不错的链接"
 log: "新增list和dict释放空间"
 ---
@@ -104,3 +104,10 @@ dict:
 * `d = {}` 新赋值，其它引用不变
 * `del d` 删除d, 其它引用不变
 * `d.clear()` 清空d的元素, 所有引用和d保持一样变化, 也为空
+
+### 修改pip源:
+
+```
+pip install requests -i https://pypi.douban.com/simple
+```
+参考:http://blog.xiayf.cn/2013/11/01/change-pypi-mirror/  
