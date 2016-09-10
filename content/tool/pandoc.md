@@ -1,12 +1,3 @@
-<!--
-@Author: xiewenqian <int>
-@Date:   2016-09-10T14:05:41+08:00
-@Email:  wixb50@gmail.com
-@Last modified by:   int
-@Last modified time: 2016-09-10T14:25:17+08:00
--->
-
-
 ---
 title: "pandoc"
 date: 2016-09-10 14:06

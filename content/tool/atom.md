@@ -1,12 +1,3 @@
-<!--
-@Author: xiewenqian <int>
-@Date:   2016-08-05T19:03:52+08:00
-@Email:  wixb50@gmail.com
-@Last modified by:   int
-@Last modified time: 2016-09-10T13:47:33+08:00
--->
-
-
 ---
 title: "Atom"
 date: 2016-08-05 19:02

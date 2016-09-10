@@ -1,12 +1,3 @@
-<!--
-@Author: xiewenqian <int>
-@Date:   2016-06-24T15:26:42+08:00
-@Email:  wixb50@gmail.com
-@Last modified by:   int
-@Last modified time: 2016-09-10T13:54:03+08:00
--->
-
-
 ---
 title: "Ubuntu"
 date: 2016-01-06 10:16
