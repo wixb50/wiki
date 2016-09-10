@@ -34,6 +34,7 @@
 <li><a href="#_1">经验</a><ul>
 <li><a href="#remove-vs-purge">remove vs purge</a></li>
 <li><a href="#_2">查询指定包的反向依赖</a></li>
+<li><a href="#ppa-purge">ppa-purge移除指定软件源所有软件</a></li>
 </ul>
 </li>
 <li><a href="#_3">问题</a><ul>
@@ -86,6 +87,13 @@
 <li><a href="http://askubuntu.com/questions/128524/how-to-list-dependent-packages-reverse-dependencies">How to list dependent packages</a></li>
 <li><a href="http://askubuntu.com/questions/5636/can-i-see-why-a-package-is-installed">Can I see why a package is installed?</a></li>
 </ul>
+<h3 id="ppa-purge">ppa-purge移除指定软件源所有软件</h3>
+<p>安装和使用</p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">ppa</span><span class="o">-</span><span class="n">purge</span>
+<span class="n">sudo</span> <span class="n">ppa</span><span class="o">-</span><span class="n">purge</span> <span class="n">ppa</span><span class="o">:</span><span class="n">webapps</span><span class="o">/</span><span class="n">preview</span>
+</pre></div>
+
+
 <h2 id="_3">问题</h2>
 <h3 id="syntax-error-unknown-group-ssl-cert-in-statoverride-file">syntax error: unknown group 'ssl-cert' in statoverride file</h3>
 <p>安装某个包时遇到这个报错:</p>
@@ -169,7 +177,7 @@
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-08-05 19:28:04</p>
+        <p>Site Generated 2016-09-10 15:53:54</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
