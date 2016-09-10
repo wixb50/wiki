@@ -1,3 +1,12 @@
+<!--
+@Author: xiewenqian <int>
+@Date:   2016-06-24T15:26:42+08:00
+@Email:  wixb50@gmail.com
+@Last modified by:   int
+@Last modified time: 2016-09-10T13:54:03+08:00
+-->
+
+
 ---
 title: "Ubuntu"
 date: 2016-01-06 10:16
@@ -51,6 +60,13 @@ showpkg也可以, 不过包含的内容更多一些:
 * [How to list dependent packages](http://askubuntu.com/questions/128524/how-to-list-dependent-packages-reverse-dependencies)
 * [Can I see why a package is installed?](http://askubuntu.com/questions/5636/can-i-see-why-a-package-is-installed)
 
+### ppa-purge移除指定软件源所有软件
+
+安装和使用
+```
+sudo apt-get install ppa-purge
+sudo ppa-purge ppa:webapps/preview
+```
 
 ## 问题 ##
 

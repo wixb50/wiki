@@ -1,3 +1,12 @@
+<!--
+@Author: xiewenqian <int>
+@Date:   2016-08-05T19:07:56+08:00
+@Email:  wixb50@gmail.com
+@Last modified by:   int
+@Last modified time: 2016-09-10T14:03:59+08:00
+-->
+
+
 ---
 title: "docker tips"
 date: 2016-08-05 18:32
@@ -15,8 +24,9 @@ collection: "docker"
 + http://www.cnblogs.com/lienhua34/p/4922130.html  
 + http://dockone.io/question/757  
 + http://www.cnblogs.com/baxk/p/5225533.html (good)   
-+ http://www.zimug.com/317.html (OK)
++ [自己搭建registry v2](http://www.zimug.com/317.html) (OK)
 + [私有仓库web-ui](https://github.com/kwk/docker-registry-frontend)
++ [vmware的开源私有仓库](https://github.com/vmware/harbor)
 
 ## docker stats 异常
 
@@ -42,3 +52,10 @@ collection: "docker"
 
 + 最新官方版:https://docs.docker.com/engine/installation/binaries/    
 + 实验成功:http://www.cnblogs.com/jackluo/p/5441888.html (OK)
+
+## 保持docker一直运行
+
+使用`sleep infinity`命令启动容器
+```
+docker run -d --name images-name your_image sleep infinity
+```
