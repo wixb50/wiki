@@ -29,7 +29,13 @@
 </div>
 <div class="clearfix"></div>
 <div id="content">
-  <h2 id="dockerv112">dockerv1.12</h2>
+  <h2 id="_1">安装</h2>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="o">:</span><span class="c1">//get.docker.com/ | sh</span>
+</pre></div>
+
+
+<p>官方也提供了内核参数检查的脚本 <a href="https://github.com/docker/docker/blob/master/contrib/check-config.sh">docker/contrib/check-config.sh</a></p>
+<h2 id="dockerv112">dockerv1.12</h2>
 <ul>
 <li>https://yq.aliyun.com/articles/57576</li>
 <li>engine自带swarm</li>
@@ -72,6 +78,25 @@
 <p>使用<code>sleep infinity</code>命令启动容器</p>
 <div class="hlcode"><pre><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="o">--</span><span class="n">name</span> <span class="n">images</span><span class="o">-</span><span class="n">name</span> <span class="n">your_image</span> <span class="n">sleep</span> <span class="n">infinity</span>
 </pre></div>
+
+
+<h2 id="docker_5">更改docker数据存储目录</h2>
+<p>docker的默认存储路径为<code>/var/lib/docker</code>，但是有时候想更改目录：</p>
+<ul>
+<li>Ubuntu/Debian:编辑<code>/etc/default/docker</code>文件，更改<code>DOCKER_OPTS="-dns 8.8.8.8 -dns 8.8.4.4 -g /mnt"</code>为目录.</li>
+<li>Fedora/Centos: 编辑<code>/etc/sysconfig/docker</code>文件，更改参数为<code>other_args="-g /var/lib/testdir"</code>.</li>
+</ul>
+<h2 id="docker_6">Docker容器内不能访问外网</h2>
+<p>编辑系统网络配置</p>
+<div class="hlcode"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">gedit</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">NetworkManager</span><span class="o">/</span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">conf</span>
+</pre></div>
+
+
+<p>注释以下行后重启</p>
+<div class="hlcode"><pre><span class="cp">#dns=dnsmasq</span>
+
+<span class="err">$</span> <span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">network</span><span class="o">-</span><span class="n">manager</span> <span class="n">restart</span>
+</pre></div>
   
 </div>
     </div>
@@ -84,7 +109,7 @@
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-09-10 15:53:54</p>
+        <p>Site Generated 2016-09-11 13:23:36</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
