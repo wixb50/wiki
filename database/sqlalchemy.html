@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>SQLAlchemy - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#database">database</a>
+    &nbsp;&#187;&nbsp;SQLAlchemy
+    <span class="updated">Updated&nbsp;
+    2015-09-30 19:00
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#orm">ORM是什么</a></li>
+<li><a href="#sqlalchemy">SQLAlchemy</a></li>
+<li><a href="#flask-w-sqlalchemy">Flask w/ SQLAlchemy</a></li>
+<li><a href="#_1">其它参考</a></li>
+</ul>
+</div>
+<h2 id="orm">ORM是什么</h2>
+<p>摘自<a href="https://en.wikipedia.org/wiki/Object-relational_mapping">维基百科</a>:</p>
+<blockquote>
+<p>Object-relational mapping (ORM, O/RM, and O/R mapping) in computer science is a programming technique for converting data between incompatible type systems in object-oriented programming languages. This creates, in effect, a "virtual object database" that can be used from within the programming language.</p>
+</blockquote>
+<ul>
+<li>O (Object) 表示对象, 是指object-oriented (OO) objects. 即在程序中根据数据表结构定义的对象模型.</li>
+<li>R (Relational) 关系数据模型, 即关系数据库的表结构</li>
+<li>M (Mapping) 将O与R之间建立映射关系</li>
+</ul>
+<p>常规的方法是根据关系数据库表结构, 在程序中定义相应的对象模型, 如类. 但是这种做法既要维护代码逻辑层面, 还要维护存储层面. 表结构的改变也会带来很多的变动. ORM就是一个中间层, 封装了数据库底层的操作(如<a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a>), 直接在代码层面定义数据模型, 进而方便操作, 因为封装了数据库底层API, 所以对于数据库的更换也不会影响到代码层面.</p>
+<p>这篇<a href="http://blog.csdn.net/u010028869/article/details/47094973">博客</a>总结的挺不错的, 包括图解.</p>
+<p>StackOverflow上还有两个关于什么是ORM, 以及其作用的讨论:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/1279613/what-is-an-orm-and-where-can-i-learn-more-about-it">What is an ORM and where can I learn more about it?</a></li>
+<li><a href="http://stackoverflow.com/questions/1152299/what-is-an-object-relational-mapping-framework">What is an Object-Relational Mapping Framework?</a></li>
+</ul>
+<p>这里有两个反对的讨论, 还没去看:</p>
+<ul>
+<li><a href="http://www.yegor256.com/2014/12/01/orm-offensive-anti-pattern.html">ORM Is an Offensive Anti-Pattern</a></li>
+<li><a href="http://database-programmer.blogspot.sg/2008/06/why-i-do-not-use-orm.html">Why I Do Not Use ORM</a></li>
+</ul>
+<h2 id="sqlalchemy">SQLAlchemy</h2>
+<ul>
+<li><a href="http://docs.sqlalchemy.org/en/latest/index.html">SQLAlchemy Doc</a></li>
+<li><a href="http://docs.sqlalchemy.org/en/latest/intro.html">Overview</a></li>
+<li><a href="http://docs.sqlalchemy.org/en/latest/orm/tutorial.html">Object Relational Tutorial</a> 必看</li>
+<li><a href="http://docs.sqlalchemy.org/en/latest/orm/relationships.html">Relationship Configuration</a></li>
+<li><a href="http://wangye.org/blog/archives/718/">SQLAlchemy 0.7学习笔记</a> 基于0.7, 参考的是Object Relational Tutorial, 总结的不错.</li>
+<li><a href="http://www.zouyesheng.com/sqlalchemy.html">SQLAlchemy参考</a> 总结的很详细, 好资料</li>
+</ul>
+<h2 id="flask-w-sqlalchemy">Flask w/ SQLAlchemy</h2>
+<ul>
+<li><a href="https://pythonhosted.org/Flask-SQLAlchemy/">Flask-SQLAlchemy</a> 对SQLAlchemy的封装, 简化了很多操作.</li>
+<li><a href="https://pythonhosted.org/Flask-SQLAlchemy/models.html">Declaring Models</a> 介绍了简单的/一对多/多对多三种模型</li>
+<li><a href="http://flask.pocoo.org/docs/0.10/patterns/sqlalchemy/">SQLAlchemy in Flask</a> 介绍了原生的SQLAlchemy在Flask中的操作</li>
+</ul>
+<h2 id="_1">其它参考</h2>
+<ul>
+<li><a href="http://www.keakon.net/2012/12/03/SQLAlchemy%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C">SQLAlchemy 使用经验</a></li>
+<li><a href="https://github.com/lzjun567/note/blob/master/note/python/sqlalchemy.md">SQLAlchemy 学习笔记</a></li>
+<li><a href="http://www.91python.com/archives/393">SQLAlchemy中文指南</a></li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2016 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2016-09-23 19:36:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+  </body>
+</html>

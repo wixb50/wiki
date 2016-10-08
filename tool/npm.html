@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>npm - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#tool">tool</a>
+    &nbsp;&#187;&nbsp;npm
+    <span class="updated">Updated&nbsp;
+    2016-04-09 16:50
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#_1">基本使用</a><ul>
+<li><a href="#npm">NPM源</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_1">基本使用</h2>
+<p>对npm不熟, 记录一下.</p>
+<div class="hlcode"><pre><span class="o">*</span> <span class="nx">npm</span> <span class="nx">help</span> <span class="nb">install</span>
+<span class="o">*</span> <span class="nx">npm</span> <span class="nx">help</span> <span class="mi">5</span> <span class="nx">npm</span><span class="na">-folders</span>
+<span class="o">*</span> <span class="nx">npm</span> <span class="nb">install</span> <span class="err">[</span><span class="na">-g</span><span class="cp">]</span> <span class="nt">&lt;package&gt;</span>
+* npm list <span class="cp">[</span><span class="na">-g</span><span class="cp">]</span> <span class="nt">&lt;package&gt;</span>
+</pre></div>
+
+
+<p>本地情况, <code>npm install &lt;package&gt;</code> 默认装到当前用户目录下的「node_modules」目录, 加上「-g」(global)则安装到<code>/usr/local/lib/node_modules/</code>下</p>
+<p><code>.npmrc</code>可以控制安装的prefix和路径等</p>
+<p>原先<code>/usr/local/lib/node_modules/</code>的属主是nobody, 导致加上「-g」安装权限报错, 需要:</p>
+<div class="hlcode"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="err">$</span><span class="n">USER</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">node_modules</span>
+</pre></div>
+
+
+<p>查看包信息:</p>
+<div class="hlcode"><pre><span class="nx">npm</span> <span class="nb">install</span> <span class="o">&lt;</span><span class="nx">package</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h3 id="npm">NPM源</h3>
+<p>本地访问官方npm源timeout，可以改为国内(如淘宝NPM)源。</p>
+<p>查看当前的npm registry地址:</p>
+<div class="hlcode"><pre><span class="err">$</span> <span class="n">npm</span> <span class="n">config</span> <span class="n">get</span> <span class="n">registry</span>
+</pre></div>
+
+
+<p>临时设置npm registry地址:</p>
+<div class="hlcode"><pre><span class="err">$</span> <span class="n">npm</span> <span class="n">config</span> <span class="n">set</span> <span class="n">registry</span> <span class="n">https</span><span class="o">:</span><span class="c1">//registry.npm.taobao.org</span>
+</pre></div>
+
+
+<p>或者只在install时指定:</p>
+<div class="hlcode"><pre><span class="nx">npm</span> <span class="o">--</span><span class="nx">registry</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//registry.npm.taobao.org install &lt;package&gt;</span>
+</pre></div>
+
+
+<p>永久则可以写入<code>.npmrc</code>:</p>
+<div class="hlcode"><pre><span class="n">registry</span> <span class="o">=</span> <span class="n">https</span><span class="o">:</span><span class="c1">//registry.npm.taobao.org</span>
+</pre></div>
+
+
+<p>或者使用<code>cnpm</code>:</p>
+<ul>
+<li><a href="http://cnpmjs.org/">CNPMJS</a></li>
+<li><a href="http://npm.taobao.org/">淘宝NPM</a></li>
+</ul>
+<p>参考: <a href="http://www.jianshu.com/p/ad29d97b0e9d">npm 换源 npm 国内镜像 cnpm</a></p>
+<p>参考:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo">NPM throws error without sudo</a></li>
+<li><a href="http://www.competa.com/blog/2014/12/how-to-run-npm-without-sudo/">How to run npm without sudo</a></li>
+<li><a href="http://tnovelli.net/blog/blog.2011-08-27.node-npm-user-install.html">NODE.JS HOWTO: INSTALL NODE+NPM AS USER</a></li>
+<li><a href="http://www.sitepoint.com/beginners-guide-node-package-manager/">A Beginner’s Guide to npm — the Node Package Manager</a></li>
+<li><a href="http://howtonode.org/introduction-to-npm">Introduction to npm</a></li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2016 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2016-09-23 19:36:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+  </body>
+</html>

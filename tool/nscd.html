@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>nscd - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#tool">tool</a>
+    &nbsp;&#187;&nbsp;nscd
+    <span class="updated">Updated&nbsp;
+    2016-04-05 14:50
+    
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul></ul>
+</div>
+<p>nscd是一个dns解析相关的缓存守护进程。</p>
+<p>之前有遇到过个别域名无法解析的情况, name server都是ok的, 没有具体排查, 只知道是nscd的原因。</p>
+<p>停掉nscd服务后解析正常。</p>
+<p>不过看到一篇文章: <a href="https://stijn.tintel.eu/blog/2012/05/10/how-to-really-flush-the-various-nscd-caches">How to really flush the various nscd caches</a>, 里面指出停掉nscd服务但是缓存文件还是会在本地存放, 所以停掉并不能解决问题, 需要强制去指定清除缓存:</p>
+<div class="hlcode"><pre><span class="nx">nscd</span> <span class="na">-i</span> <span class="o">&lt;</span><span class="nb">table_name</span><span class="o">&gt;</span>  <span class="err">#</span> <span class="err">或者</span> <span class="nx">nscd</span> <span class="o">--</span><span class="n">invalidate</span><span class="o">=&lt;</span><span class="nb">table_name</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>一般是hosts表:</p>
+<div class="hlcode"><pre><span class="n">nscd</span> <span class="o">-</span><span class="n">i</span> <span class="n">hosts</span>
+</pre></div>
+
+
+<p>TODO 这个问题下次再遇到验证下, 本地还没看到这个缓存问题, 暂时不去分析了.</p>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2016 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2016-09-23 19:36:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+  </body>
+</html>

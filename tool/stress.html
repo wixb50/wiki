@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>stress - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#tool">tool</a>
+    &nbsp;&#187;&nbsp;stress
+    <span class="updated">Updated&nbsp;
+    2016-09-13 09:10
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <h2 id="_1">介绍</h2>
+<p>顾名思义，stress是用来测试服务器的负载情况的压力测试工具。</p>
+<h2 id="_2">使用</h2>
+<ul>
+<li>Stress参数说明</li>
+</ul>
+<div class="hlcode"><pre><span class="o">-?</span> <span class="err">显示帮助信息</span>
+<span class="o">-</span><span class="n">v</span> <span class="err">显示版本号</span>
+<span class="o">-</span><span class="n">q</span> <span class="err">不显示运行信息</span>
+<span class="o">-</span><span class="n">n</span><span class="err">，</span><span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span> <span class="err">显示已经完成的指令执行情况</span>
+<span class="o">-</span><span class="n">t</span> <span class="o">--</span><span class="n">timeout</span> <span class="n">N</span> <span class="err">指定运行</span><span class="n">N</span><span class="err">秒后停止</span>
+   <span class="o">--</span><span class="n">backoff</span> <span class="n">N</span> <span class="err">等待</span><span class="n">N</span><span class="err">微妙后开始运行</span>
+<span class="o">-</span><span class="n">c</span> <span class="o">--</span><span class="n">cpu</span> <span class="err">产生</span><span class="n">n</span><span class="err">个进程</span> <span class="err">每个进程都反复不停的计算随机数的平方根</span>
+<span class="o">-</span><span class="n">i</span> <span class="o">--</span><span class="n">io</span>  <span class="err">产生</span><span class="n">n</span><span class="err">个进程</span> <span class="err">每个进程反复调用</span><span class="n">sync</span><span class="p">()</span><span class="err">，</span><span class="n">sync</span><span class="p">()</span><span class="err">用于将内存上的内容写到硬盘上</span>
+<span class="o">-</span><span class="n">m</span> <span class="o">--</span><span class="n">vm</span> <span class="n">n</span> <span class="err">产生</span><span class="n">n</span><span class="err">个进程</span><span class="p">,</span><span class="err">每个进程不断调用内存分配</span><span class="n">malloc</span><span class="err">和内存释放</span><span class="n">free</span><span class="err">函数</span>
+   <span class="o">--</span><span class="n">vm</span><span class="o">-</span><span class="n">bytes</span> <span class="n">B</span> <span class="err">指定</span><span class="n">malloc</span><span class="err">时内存的字节数</span> <span class="p">(</span><span class="err">默认</span><span class="mi">256</span><span class="n">MB</span><span class="p">)</span>
+   <span class="o">--</span><span class="n">vm</span><span class="o">-</span><span class="n">hang</span> <span class="n">N</span> <span class="err">指示每个消耗内存的进程在分配到内存后转入休眠状态，与正常的无限分配和释放内存的处理相反，这有利于模拟只有少量内存的机器</span>
+<span class="o">-</span><span class="n">d</span> <span class="o">--</span><span class="n">hadd</span> <span class="n">n</span> <span class="err">产生</span><span class="n">n</span><span class="err">个执行</span><span class="n">write</span><span class="err">和</span><span class="n">unlink</span><span class="err">函数的进程</span>
+   <span class="o">--</span><span class="n">hadd</span><span class="o">-</span><span class="n">bytes</span> <span class="n">B</span> <span class="err">指定写的字节数，默认是</span><span class="mi">1</span><span class="n">GB</span>
+   <span class="o">--</span><span class="n">hadd</span><span class="o">-</span><span class="n">noclean</span> <span class="err">不要将写入随机</span><span class="n">ASCII</span><span class="err">数据的文件</span><span class="n">Unlink</span>
+
+<span class="err">时间单位可以为秒</span><span class="n">s</span><span class="err">，分</span><span class="n">m</span><span class="err">，小时</span><span class="n">h</span><span class="err">，天</span><span class="n">d</span><span class="err">，年</span><span class="n">y</span><span class="err">，文件大小单位可以为</span><span class="n">K</span><span class="err">，</span><span class="n">M</span><span class="err">，</span><span class="n">G</span>
+</pre></div>
+
+
+<ul>
+<li>产生13个cpu进程4个io进程1分钟后停止运行</li>
+</ul>
+<div class="hlcode"><pre><span class="err">$</span> <span class="n">stress</span> <span class="o">-</span><span class="n">c</span> <span class="mi">13</span> <span class="o">-</span><span class="n">i</span> <span class="mi">4</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">timeout</span> <span class="mi">1</span><span class="n">m</span>
+</pre></div>
+
+
+<h2 id="_3">参考</h2>
+<ul>
+<li><a href="http://www.hi-linux.com/2016/06/27/Linux%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E8%BD%AF%E4%BB%B6Stress%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">Linux压力测试软件Stress使用指南</a></li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2016 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2016-09-23 19:36:46</p>
+      </div> <!-- end footer-right -->
+    </div>
+  </body>
+</html>
