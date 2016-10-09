@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>pip wheel - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#python">python</a>
+    &nbsp;&#187;&nbsp;pip wheel
+    <span class="updated">Updated&nbsp;
+    2016-10-09 13:30
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <p>TODO</p>
+<h2 id="pip-wheel-python">pip wheel 实现 Python 依赖包的离线安装</h2>
+<p>有时候, 需要部署 Python 应用的服务器没有网络连接, 这时候, 你就要把整个 Python 应用做成离线安装包.<br />
+借助 wheel, 很容易就可以实现.</p>
+<p>首先, 你的开发机器上要安装 wheel:</p>
+<div class="hlcode"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">wheel</span>
+</pre></div>
+
+
+<p>将<code>pip list</code>中的包保存到<code>requirements.txt</code>中.</p>
+<div class="hlcode"><pre><span class="n">pip</span> <span class="n">freeze</span> <span class="o">&gt;</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+
+
+<p>接下来, 下载依赖包的 wheel 文件:</p>
+<div class="hlcode"><pre><span class="n">pip</span> <span class="n">wheel</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">w</span> <span class="n">wheelhouse</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+
+
+<p>默认情况下, 上述命令会下载 requirements.txt 中每个包的 wheel 包到当前目录的 wheelhouse 文件夹, 包括依赖的依赖.</p>
+<p>现在你可以把这个 wheelhouse 文件夹打包到你的安装包中. 在你的安装脚本中执行:</p>
+<div class="hlcode"><pre><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">use</span><span class="o">-</span><span class="n">wheel</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">index</span> <span class="o">--</span><span class="n">find</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="n">wheelhouse</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+
+
+<p>就可以实现离线安装了. 当然, 还要考虑 pip 以及 wheel 自身的安装.</p>
+<h2 id="_1">参考</h2>
+<ul>
+<li><a href="http://guoqiao.me/post/2015/1212-pip-install-offline-via-wheels">使用 pip wheel 实现 Python 依赖包的离线安装</a></li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2016 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2016-10-09 20:29:53</p>
+      </div> <!-- end footer-right -->
+    </div>
+  </body>
+</html>
