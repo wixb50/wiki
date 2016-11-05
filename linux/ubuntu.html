@@ -32,6 +32,7 @@
 <div id="content">
   <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#_1">经验</a><ul>
+<li><a href="#linuxmintubuntu">加速你的LinuxMint/Ubuntu技巧</a></li>
 <li><a href="#remove-vs-purge">remove vs purge</a></li>
 <li><a href="#_2">查询指定包的反向依赖</a></li>
 <li><a href="#ppa-purge">ppa-purge移除指定软件源所有软件</a></li>
@@ -52,6 +53,24 @@
 <li><a href="https://help.ubuntu.com/">Ubuntu Help</a></li>
 </ul>
 <h2 id="_1">经验</h2>
+<h3 id="linuxmintubuntu">加速你的LinuxMint/Ubuntu技巧</h3>
+<ol>
+<li>
+<p>使用Preload预加载</p>
+<p>与<code>Prelink</code>类似，Preload是一个运行于后台的监护程序，探测那些常用的软件，并将其放入缓存，以起到加速的作用;安装<code>sudo apt-get install preload</code>,配置文件<code>/etc/preload.conf</code>。</p>
+</li>
+<li>
+<p>清理APT缓存</p>
+<p>sudo apt-get autoclean/clean/autoremove</p>
+</li>
+<li>
+<p>优化swap交换分区</p>
+<p>设置优先使用物理内存的百分比，再启用swap：</p>
+<p>1.查看系统的swappiness参数：<code>cat /proc/sys/vm/swappiness</code>;<br />
+2.临时修改swappiness值为10：<code>sudo sysctl vm.swappiness=10</code>;<br />
+3.修改启动参数：<code>sudo vim /etc/sysctl.conf</code>，末尾加入<code>vm.swappiness = 10</code>.</p>
+</li>
+</ol>
 <h3 id="remove-vs-purge">remove vs purge</h3>
 <p><code>apt-get</code> 的 <code>remove</code> 和 <code>purge</code> 区别:</p>
 <ul>
@@ -177,7 +196,7 @@
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-10-09 20:29:53</p>
+        <p>Site Generated 2016-11-05 10:57:19</p>
       </div> <!-- end footer-right -->
     </div>
   </body>

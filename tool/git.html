@@ -31,14 +31,15 @@
 <div class="clearfix"></div>
 <div id="content">
   <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#git">给Git输出信息增加颜色</a></li>
-<li><a href="#git_1">关于Git的分支</a></li>
+<li><a href="#git">Git设置自动保存密码</a></li>
+<li><a href="#git_1">给Git输出信息增加颜色</a></li>
+<li><a href="#git_2">关于Git的分支</a></li>
 <li><a href="#_1">远程分支</a><ul>
 <li><a href="#fetchpull">关于fetch和pull区别</a></li>
 </ul>
 </li>
-<li><a href="#git_2">Git标签</a></li>
-<li><a href="#git_3">Git 全局配置</a></li>
+<li><a href="#git_3">Git标签</a></li>
+<li><a href="#git_4">Git 全局配置</a></li>
 <li><a href="#vimdiff">使用vimdiff</a></li>
 <li><a href="#log">查看提交log</a></li>
 <li><a href="#_2">文件中文名问题</a></li>
@@ -73,11 +74,44 @@
 <li><a href="#git-diff_1">git diff 相关</a></li>
 <li><a href="#git-diff_2">git diff 一行太长, 输出混乱</a></li>
 <li><a href="#git-fetchpull">git fetch/pull 小记</a></li>
-<li><a href="#git_4">Git资料</a></li>
+<li><a href="#git_5">Git资料</a></li>
 </ul>
 </div>
 <p>Git的<code>help</code>信息非常好，很多可以直接help来了解</p>
-<h2 id="git">给Git输出信息增加颜色</h2>
+<h2 id="git">Git设置自动保存密码</h2>
+<p><strong>方法一:</strong></p>
+<p>设置记住密码（默认15分钟）：</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">credential</span><span class="p">.</span><span class="n">helper</span> <span class="n">cache</span>
+</pre></div>
+
+
+<p>如果想自己设置时间，可以这样做：</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">config</span> <span class="n">credential</span><span class="p">.</span><span class="n">helper</span> <span class="err">&#39;</span><span class="n">cache</span> <span class="o">--</span><span class="n">timeout</span><span class="o">=</span><span class="mi">3600</span><span class="err">&#39;</span> <span class="c1">//这样就设置一个小时之后失效</span>
+</pre></div>
+
+
+<p>长期存储密码：</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">credential</span><span class="p">.</span><span class="n">helper</span> <span class="n">store</span>
+</pre></div>
+
+
+<p>增加远程地址的时候带上密码也是可以的。(推荐)</p>
+<div class="hlcode"><pre><span class="nl">http:</span><span class="c1">//yourname:password@git.china.net/name/project.git</span>
+</pre></div>
+
+
+<p>补充：git配置文件<code>~/.gitconfig</code>,git密码保存文件<code>~/.git-credentials</code>.</p>
+<p><strong>方法二：</strong></p>
+<p>在自己的用户目录下新建<code>_netrc</code>文件并输入以下内容</p>
+<div class="hlcode"><pre><span class="n">machine</span> <span class="n">git</span><span class="p">.</span><span class="n">china</span><span class="p">.</span><span class="n">net</span>
+
+<span class="n">login</span> <span class="n">username</span>
+
+<span class="n">password</span> <span class="n">password</span>
+</pre></div>
+
+
+<h2 id="git_1">给Git输出信息增加颜色</h2>
 <p>编辑<code>/etc/gitconfig</code>
 比如要对<code>git status</code>设置颜色，可以:</p>
 <div class="hlcode"><pre><span class="k">[color]</span>
@@ -104,7 +138,7 @@
 <li><a href="http://stackoverflow.com/questions/8131322/enabling-git-syntax-highlighting-for-macs-terminal">Enabling git syntax highlighting for macs terminal</a></li>
 <li><a href="http://nathanhoad.net/how-to-colours-in-git">How to colours in git</a></li>
 </ul>
-<h2 id="git_1">关于Git的分支</h2>
+<h2 id="git_2">关于Git的分支</h2>
 <p>参考的 <a href="http://git-scm.com/book/zh/Git-%E5%88%86%E6%94%AF-%E4%BD%95%E8%B0%93%E5%88%86%E6%94%AF">何谓分支</a></p>
 <p>因为Git是保存的快照，Git仓库有以下几个基本对象</p>
 <ul>
@@ -136,7 +170,7 @@
 <p>What is <code>git fetch</code>? and what is the difference to <code>git pull</code>?</p>
 <p><code>git fetch</code>是update from remote repo，但是不合并</p>
 <p><code>git pull</code>是fetch and merge</p>
-<h2 id="git_2">Git标签</h2>
+<h2 id="git_3">Git标签</h2>
 <ul>
 <li>含附注的标签(annotated)</li>
 <li>轻量级标签(lightweight)</li>
@@ -153,7 +187,7 @@
 
 
 <p><a href="http://stackoverflow.com/a/5480292/1276501">参考</a></p>
-<h2 id="git_3">Git 全局配置</h2>
+<h2 id="git_4">Git 全局配置</h2>
 <p>全局忽略文件</p>
 <ul>
 <li><a href="http://git-scm.com/book/zh/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-%E9%85%8D%E7%BD%AE-Git">忽略文件</a></li>
@@ -944,7 +978,7 @@
 <li><a href="http://stackoverflow.com/questions/7169103/git-pull-fetch-with-refspec-differences">Git pull/fetch with refspec differences</a></li>
 <li><a href="https://git-scm.com/book/zh/v1/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-The-Refspec">pro git: 9.5 Git 内部原理 - The Refspec</a></li>
 </ul>
-<h2 id="git_4">Git资料</h2>
+<h2 id="git_5">Git资料</h2>
 <ul>
 <li><a href="http://git-scm.com/book/zh">ProGit中文版</a></li>
 <li><a href="http://gitref.org/">Git Reference</a></li>
@@ -961,7 +995,7 @@
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-10-09 20:29:53</p>
+        <p>Site Generated 2016-11-05 10:57:19</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
