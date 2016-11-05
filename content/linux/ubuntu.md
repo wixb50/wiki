@@ -15,6 +15,24 @@ log: "增加配置时区命令"
 
 ## 经验 ##
 
+### 加速你的LinuxMint/Ubuntu技巧
+
+1. 使用Preload预加载
+
+    与`Prelink`类似，Preload是一个运行于后台的监护程序，探测那些常用的软件，并将其放入缓存，以起到加速的作用;安装`sudo apt-get install preload`,配置文件`/etc/preload.conf`。
+
+2. 清理APT缓存
+
+    sudo apt-get autoclean/clean/autoremove
+
+3. 优化swap交换分区
+
+    设置优先使用物理内存的百分比，再启用swap：
+
+    1.查看系统的swappiness参数：`cat /proc/sys/vm/swappiness`;  
+    2.临时修改swappiness值为10：`sudo sysctl vm.swappiness=10`;  
+    3.修改启动参数：`sudo vim /etc/sysctl.conf`，末尾加入`vm.swappiness = 10`.
+
 ### remove vs purge ###
 
 `apt-get` 的 `remove` 和 `purge` 区别:

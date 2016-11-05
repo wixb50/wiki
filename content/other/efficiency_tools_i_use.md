@@ -7,6 +7,12 @@ log: "更新梯子"
 
 [TOC]
 
+## 截图工具
+
+1. DeepinScrot
+
+    媲美QQ截图的Ubuntu截图工具DeepinScrot，最重要的是debian系的，国行正品;安装后请记得设置自定义快捷键。
+
 ## 云笔记本 ##
 
 1. EveryNote

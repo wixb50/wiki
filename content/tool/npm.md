@@ -9,7 +9,7 @@ log: "增加npm源说明"
 
 ## 基本使用 ##
 
-对npm不熟, 记录一下.
+记录一下.
 
 	* npm help install
 	* npm help 5 npm-folders
@@ -52,6 +52,13 @@ log: "增加npm源说明"
 
 * [CNPMJS](http://cnpmjs.org/)
 * [淘宝NPM](http://npm.taobao.org/)
+
+推荐使用`nrm`快速切换npm源：
+
+```
+sudo npm install -g nrm
+nrm ls
+```
 
 参考: [npm 换源 npm 国内镜像 cnpm](http://www.jianshu.com/p/ad29d97b0e9d)
 

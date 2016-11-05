@@ -10,6 +10,41 @@ log: "增加删除分支的命令"
 
 Git的`help`信息非常好，很多可以直接help来了解
 
+## Git设置自动保存密码
+
+**方法一:**
+
+设置记住密码（默认15分钟）：
+```
+git config --global credential.helper cache
+```
+如果想自己设置时间，可以这样做：
+```
+git config credential.helper 'cache --timeout=3600' //这样就设置一个小时之后失效
+```
+
+长期存储密码：
+```
+git config --global credential.helper store
+```
+增加远程地址的时候带上密码也是可以的。(推荐)
+```
+http://yourname:password@git.china.net/name/project.git
+```
+
+补充：git配置文件`~/.gitconfig`,git密码保存文件`~/.git-credentials`.
+
+**方法二：**
+
+在自己的用户目录下新建`_netrc`文件并输入以下内容
+```
+machine git.china.net
+
+login username
+
+password password
+```
+
 ## 给Git输出信息增加颜色 ##
 
 编辑`/etc/gitconfig`
@@ -302,7 +337,7 @@ Git 会使用设置的编辑器打开如下:
 [SO](http://stackoverflow.com/a/3042512/1276501)上的回答:
 
 > For example, if your commit history is `A-B-C-D-E-F` with `F` as `HEAD`, and you want to change the author of `C` and `D`, then you would...
-> 
+>
 >  1. Specify `git rebase -i B`
 >  2. change the lines for both `C` and `D` to `edit`
 >  3. Once the rebase started, it would first pause at `C`
@@ -355,9 +390,9 @@ StackOverflow上有两篇讨论非常好:
 
 `ORIG_HEAD` 用于指向前一个操作状态，因此在git pull之后如果想得到pull的
 	内容就可以：
-	 
+
 	git diff ORIG_HEAD
-	 
+
 	git diff --stat                 用于生成统计信息。
 	git diff --stat ORIG_HEAD
 
@@ -413,7 +448,7 @@ TODO
 		 - Bullet points are okay, too
 
 		 - Typically a hyphen or asterisk is used for the bullet, preceded by a
-		   single space, with blank lines in between, but conventions vary here	
+		   single space, with blank lines in between, but conventions vary here
 
 * **第一行** 结尾不要用句号，这个可以认为是一个标题
 * **第三行** 开始的详细描述长度不超过72个字符

@@ -20,6 +20,9 @@ $ git clone https://github.com/wixb50/wiki.git
 
 ```
 $ simiki g
+
+$ git add .
+$ git commit -am "commit message"
 $ git push origin master
 
 $ fab deploy
