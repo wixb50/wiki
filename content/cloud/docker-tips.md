@@ -26,6 +26,12 @@ curl -sSL https://get.docker.com/ | sh
 + [自己搭建registry v2](http://www.zimug.com/317.html) (OK)
 + [私有仓库web-ui](https://github.com/kwk/docker-registry-frontend)
 + [vmware的开源私有仓库](https://github.com/vmware/harbor)
++ [Portus, Authorization service and frontend for Docker registry](https://github.com/SUSE/Portus) (good)
+
+## docker volume
+
++ [Docker Volume 之权限管理](https://yq.aliyun.com/articles/53990)
++ [gosu, non root use volume](https://github.com/tianon/gosu)
 
 ## docker stats 异常
 
@@ -44,6 +50,7 @@ curl -sSL https://get.docker.com/ | sh
 ## docker工具
 
 + [docker搭建dns服务器](http://www.coderli.com/config-dnsmasq-using-docker/)
++ [docker-nginx-sticky](https://github.com/dawidmalina/docker-nginx-sticky)
 
 ## Docker二进制安装方法
 
