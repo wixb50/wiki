@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>jupyter magic - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#python">python</a>
+    &nbsp;&#187;&nbsp;jupyter magic
+    <span class="updated">Updated&nbsp;
+    2017-07-09 12:30
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#_1">介绍</a></li>
+<li><a href="#_2">常用的魔术命令</a></li>
+<li><a href="#_3">参考</a></li>
+</ul>
+</div>
+<h2 id="_1">介绍</h2>
+<p>在 IPython 的会话环境中，所有文件都可以通过 %run 命令来当做脚本执行，并且文件中的变量也会随即导入当前命名空间。
+即，对于一个模块文件，你对他使用 %run 命令的效果和 from module import * 相同,
+这种以 % 开头的命令在 IPython 中被称为魔术命令，用于加强 shell 的功能。</p>
+<h2 id="_2">常用的魔术命令</h2>
+<p>常用的魔术命令有：</p>
+<div class="hlcode"><pre><span class="c">%quickref   显示 IPython 快速参考</span>
+<span class="c">%magic  显示所有魔术命令的详细文档</span>
+<span class="c">%debug  从最新的异常跟踪的底部进入交互式调试器</span>
+<span class="c">%pdb    在异常发生后自动进入调试器</span>
+<span class="c">%reset  删除 interactive 命名空间中的全部变量</span>
+<span class="c">%run script.py  执行 script.py</span>
+<span class="c">%load test.py 导入该段代码的cell中输入，支持http文件</span>
+<span class="c">%prun statement 通过 cProfile 执行对 statement 的逐行性能分析</span>
+<span class="c">%time statement 测试 statement 的执行时间</span>
+<span class="c">%timeit statement   多次测试 statement 的执行时间并计算平均值</span>
+<span class="c">%who、%who_ls、%whos  显示 interactive 命名空间中定义的变量，信息级别/冗余度可变</span>
+<span class="c">%xdel variable  删除 variable，并尝试清除其在 IPython 中的对象上的一切引用</span>
+<span class="c">%bookmark   使用 IPython 的目录书签系统</span>
+<span class="c">%cd direcrory   切换工作目录</span>
+<span class="c">%pwd    返回当前工作目录（字符串形式）</span>
+<span class="c">%env    返回当前系统变量（以字典形式）</span>
+
+<span class="sx">!cmd    在系统 shell 执行 cmd</span>
+<span class="n">output</span><span class="p">=</span>!<span class="n">cmd</span> <span class="n">args</span>    执行<span class="n">cmd</span> 并赋值
+</pre></div>
+
+
+<p><strong>注意，jupyter notebook 是支持 TAB 键自动补充单词的。</strong></p>
+<h2 id="_3">参考</h2>
+<ul>
+<li><a href="http://blog.csdn.net/lee_j_r/article/details/52791228">jupyter notebook的安装与使用</a></li>
+<li><a href="http://liuchengxu.org/pelican-blog/jupyter-notebook-tips.html">27 个Jupyter Notebook的小提示与技巧</a></li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-07-09 13:06:15</p>
+      </div> <!-- end footer-right -->
+    </div>
+  </body>
+</html>
