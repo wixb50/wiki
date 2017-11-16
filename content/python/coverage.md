@@ -1,6 +1,7 @@
 ---
 title: "coverage"
 date: 2014-06-14 15:00
+collection: "开发必备"
 ---
 
 [文档](http://nedbatchelder.com/code/coverage/) | [项目主页](https://pypi.python.org/pypi/coverage)

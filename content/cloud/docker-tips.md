@@ -1,7 +1,7 @@
 ---
 title: "docker tips"
 date: 2016-08-05 18:32
-collection: "docker"
+collection: "Docker"
 ---
 
 ## 安装 ##
@@ -19,10 +19,7 @@ curl -sSL https://get.docker.com/ | sh
 + 离线deb包: https://apt.dockerproject.org/repo/pool/main/d/docker-engine/  
 
 ## 搭建docker私有仓库：
-
-+ http://www.cnblogs.com/lienhua34/p/4922130.html  
-+ http://dockone.io/question/757  
-+ http://www.cnblogs.com/baxk/p/5225533.html (good)   
+ 
 + [自己搭建registry v2](http://www.zimug.com/317.html) (OK)
 + [私有仓库web-ui](https://github.com/kwk/docker-registry-frontend)
 + [vmware的开源私有仓库](https://github.com/vmware/harbor)
@@ -87,4 +84,25 @@ $ sudo gedit /etc/NetworkManager/NetworkManager.conf
 #dns=dnsmasq
 
 $ sudo /etc/init.d/network-manager restart
+```
+
+
+## 自定义docker0网络
+
+编辑`/etc/docker/daemon.json`文件,不存在则创建
+
+```
+{
+  "bip": "172.33.0.1/16"
+}
+```
+重启docker进程.
+
+## 创建自定义子网的docker网络
+
+```
+docker network create \
+  --driver overlay \
+  --subnet 10.0.9.0/24 \
+  my-multi-host-network
 ```

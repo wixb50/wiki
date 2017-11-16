@@ -1,5 +1,5 @@
 ---
-title: "How to Find the Source Code"
+title: "Find the Source Code"
 date: 2013-08-17 07:39
 ---
 

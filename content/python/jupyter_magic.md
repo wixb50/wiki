@@ -1,7 +1,7 @@
 ---
 title: "jupyter magic"
 date: 2017-07-09 12:30
-collection: "jupyterhub"
+collection: "Jupyterhub"
 ---
 
 [TOC]

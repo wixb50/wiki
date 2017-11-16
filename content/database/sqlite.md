@@ -31,3 +31,47 @@ logs: "增加备份命令"
 
 参考: [How to backup sqlite database?](http://stackoverflow.com/a/25684912/1276501)
 
+### 损坏恢复 ###
+
+错误信息: `ERROR: SQLite database is malformed – SOLVED`.
+
+将好的数据导出到sql:
+
+```
+$ sqlite3 mydb.db
+sqlite> .mode insert
+sqlite> .output mydb_export.sql
+sqlite> .dump
+sqlite> .exit
+```
+
+恢复sql到sqlite中:
+
+```
+$ mv mydb.db mydb.db.original
+$ sqlite3 mydb.db < mydb_export.sql
+// 正常检查
+$ sqlite3 mydb.db
+sqlite> analyze;
+sqlite> .exit
+```
+
+参考: [ERROR: SQLite database is malformed – SOLVED](http://www.froebe.net/blog/2015/05/27/error-sqlite-database-is-malformed-solved/)
+
+### 解锁数据库    ###
+
+因为sqlite3数据库直接是一个实体文件，经常会因为文件锁导致文件被lock。
+
+检查占用该sqlite的进程:
+
+```
+$ fuser development.db
+> development.db: 5430
+```
+
+强制kill该进程:
+
+```
+$ kill -9 5430
+```
+

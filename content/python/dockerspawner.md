@@ -1,7 +1,7 @@
 ---
 title: "DockerSpawner"
 date: 2016-06-27 13:30
-collection: "jupyterhub"
+collection: "Jupyterhub"
 ---
 
 [TOC]

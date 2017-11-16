@@ -1,6 +1,7 @@
 ---
 title: "Mock"
 date: 2016-02-29 10:30
+collection: "开发必备"
 ---
 
 [TOC]

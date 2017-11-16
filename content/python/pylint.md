@@ -1,6 +1,7 @@
 ---
 title: "Pylint"
 date: 2014-08-26 09:04
+collection: "开发必备"
 ---
 
 [Pylint](http://www.pylint.org):
