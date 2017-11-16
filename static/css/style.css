@@ -130,7 +130,16 @@ hr {
 }
 
 .category_list ul {
-  padding-left: 1em;
+  padding-left: 0em;
+}
+
+li.pagelist {
+  list-style: none;
+}
+
+.item_arrow:before {
+    content: "\0BB \020";
+    color: gray;
 }
 
 .category_list li.pagelist {
@@ -149,6 +158,10 @@ hr {
   color: #333;
   font-weight: normal;
   margin-top: 0;
+}
+
+.coll_name {
+  float: left;
 }
 
 #content {

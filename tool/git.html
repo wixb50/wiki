@@ -112,7 +112,7 @@
 
 
 <h2 id="git_1">给Git输出信息增加颜色</h2>
-<p>编辑<code>/etc/gitconfig</code>
+<p>编辑<code>/etc/gitconfig</code><br />
 比如要对<code>git status</code>设置颜色，可以:</p>
 <div class="hlcode"><pre><span class="k">[color]</span>
     <span class="na">ui</span> <span class="o">=</span> <span class="s">auto</span>
@@ -246,7 +246,7 @@
 <h2 id="pull">指定路径pull</h2>
 <p>以前都是 cd 到仓库当前目录然后 pull. 因为想到 <code>svn up</code> 可以直接指定路径, 这种基本功能 git 肯定会有的, 但是直接指定路径不行.</p>
 <p>搜了下, StackOverflow 上的 <a href="http://stackoverflow.com/a/9876901/1276501">回答1</a> 和 <a href="http://stackoverflow.com/a/9746005/1276501">回答2</a> 非常给力.</p>
-<p>Git 的参数 <code>--git-dir</code> 可以指定 Git 的路径, 即使用这个 <code>.git</code> 的配置等来更新 repo. 但是这个会以 <code>pwd</code> 为要更新的 repo 路径.
+<p>Git 的参数 <code>--git-dir</code> 可以指定 Git 的路径, 即使用这个 <code>.git</code> 的配置等来更新 repo. 但是这个会以 <code>pwd</code> 为要更新的 repo 路径.<br />
 所以还需要 <code>--work-tree</code> 来指定要更新的 repo 的路径, 而不需要 cd 过去.</p>
 <div class="hlcode"><pre>git --git-dir<span class="o">=</span>/path/to/git-repo/.git --work-tree<span class="o">=</span>/path/to/git-repo/ pull
 </pre></div>
@@ -432,7 +432,7 @@
 </pre></div>
 
 
-<p><code>ORIG_HEAD</code> 用于指向前一个操作状态，因此在git pull之后如果想得到pull的
+<p><code>ORIG_HEAD</code> 用于指向前一个操作状态，因此在git pull之后如果想得到pull的<br />
     内容就可以：</p>
 <div class="hlcode"><pre><span class="n">git</span> <span class="n">diff</span> <span class="n">ORIG_HEAD</span>
 
@@ -991,12 +991,15 @@
         <p>
         Copyright © 2017 Elegancetse Tse.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
-        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        Theme by <a href="https://github.com/tankywoo/yasimple_x2" target="_blank">YASimple_X2</a>.
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-09 13:06:15</p>
+        <p>Site Generated 2017-11-16 16:26:32</p>
       </div> <!-- end footer-right -->
     </div>
+
+    
+    
   </body>
 </html>

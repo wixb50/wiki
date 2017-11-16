@@ -32,35 +32,35 @@
   <p>TODO</p>
 <p>tcpdump is a common packet analyzer that runs under the command line</p>
 <h2 id="_1">语法</h2>
-<p>Syntax: 
+<p>Syntax: <br />
 | Protocol | Direction | Host(s) | Value | Logical Operations | Other expression |</p>
-<p>Example:
+<p>Example:<br />
 | tcp | dst | 10.1.1.1 | 80 | and | tcp dst 10.2.2.2 3128 |</p>
-<p>== Protocol: ==
+<p>== Protocol: ==<br />
 Values: ether, fddi, ip, arp, rarp, decnet, lat, sca, moprc, mopdl, tcp and udp.</p>
 <p>If no protocol is specified, all the protocols are used. </p>
-<p>== Direction: ==
+<p>== Direction: ==<br />
 Values: src, dst, src and dst, src or dst</p>
 <p>If no source or destination is specified, the "src or dst" keywords are applied. </p>
 <p>For example, "host 10.2.2.2" is equivalent to "src or dst host 10.2.2.2".</p>
-<p>== Host(s): ==
+<p>== Host(s): ==<br />
 Values: net, port, host, portrange.</p>
 <p>If no host(s) is specified, the "host" keyword is used.</p>
 <p>For example, "src 10.1.1.1" is equivalent to "src host 10.1.1.1". </p>
-<p>== Logical Operations: ==
+<p>== Logical Operations: ==<br />
 Values: not, and, or.</p>
 <p>Negation ("not") has highest precedence. Alternation ("or") and concatenation ("and") have equal precedence and associate left to right.</p>
 <p>For example,</p>
 <p>"not tcp port 3128 and tcp port 23" is equivalent to "(not tcp port 3128) and tcp port 23".</p>
 <p>"not tcp port 3128 and tcp port 23" is NOT equivalent to "not (tcp port 3128 and tcp port 23)".</p>
 <p>= Arguments =</p>
-<p>== -A ==
+<p>== -A ==<br />
 print in ASCII</p>
-<p>== -c ==
+<p>== -c ==<br />
 Specify the receive count </p>
-<p>== -D ==
+<p>== -D ==<br />
 Print the list of the network interfaces available on the system and on which tcpdump can capture packets</p>
-<p>== -i ==
+<p>== -i ==<br />
 Listen on interface</p>
 <p>== -l ==</p>
 <blockquote>
@@ -68,7 +68,7 @@ Listen on interface</p>
 <p>tcpdump -l | tee dat</p>
 </blockquote>
 </blockquote>
-<p>== -n ==
+<p>== -n ==<br />
 Don't convert addresses to names</p>
 <p>== -v/-vv ==</p>
 <p>= Read More =</p>
@@ -78,10 +78,10 @@ Don't convert addresses to names</p>
 <li><a href="http://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html">Linux tcpdump命令详解</a></li>
 <li><a href="http://danielmiessler.com/study/tcpdump/">A tcpdump Tutorial and Primer</a></li>
 <li><a href="http://www.tecmint.com/12-tcpdump-commands-a-network-sniffer-tool/">12 Tcpdump Commands – A Network Sniffer Tool</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Tcpdump">wiki-tcpdump</a>
-http://www.alexonlinux.com/tcpdump-for-dummies
-http://www.carnal0wnage.com/papers/TCPdumpBasics.pdf
-http://science.hamptonu.edu/compsci/docs/iac/packet_sniffing.pdf
+<li><a href="http://en.wikipedia.org/wiki/Tcpdump">wiki-tcpdump</a><br />
+http://www.alexonlinux.com/tcpdump-for-dummies<br />
+http://www.carnal0wnage.com/papers/TCPdumpBasics.pdf<br />
+http://science.hamptonu.edu/compsci/docs/iac/packet_sniffing.pdf<br />
 http://www.danielmiessler.com/study/tcpdump/</li>
 </ul>
 <h2 id="ipv6">ipv6</h2>
@@ -100,7 +100,7 @@ http://www.danielmiessler.com/study/tcpdump/</li>
 </pre></div>
 
 
-<p>= History =
+<p>= History =<br />
 Create 2013/01/13</p>
 <p>Last modified 2013/01/13</p>
   
@@ -111,12 +111,15 @@ Create 2013/01/13</p>
         <p>
         Copyright © 2017 Elegancetse Tse.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
-        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        Theme by <a href="https://github.com/tankywoo/yasimple_x2" target="_blank">YASimple_X2</a>.
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-09 13:06:15</p>
+        <p>Site Generated 2017-11-16 16:26:32</p>
       </div> <!-- end footer-right -->
     </div>
+
+    
+    
   </body>
 </html>

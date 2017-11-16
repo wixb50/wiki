@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>pip - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#python">python</a>
+    &nbsp;&#187;&nbsp;pip
+    <span class="updated">Updated&nbsp;
+    2017-11-16 13:30
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#pypi">修改PyPI源</a><ul>
+<li><a href="#_1">命令方式：针对一次使用，临时修改</a></li>
+<li><a href="#easy_installpip">修改（若没有，则创建）easy_install/pip的配置文件</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="pypi">修改PyPI源</h2>
+<h3 id="_1">命令方式：针对一次使用，临时修改</h3>
+<ul>
+<li>easy_install</li>
+</ul>
+<div class="hlcode"><pre><span class="n">easy_install</span> <span class="o">-</span><span class="n">i</span> <span class="n">http</span><span class="o">:</span><span class="c1">//e.pypi.python.org/simple requests</span>
+</pre></div>
+
+
+<ul>
+<li>pip</li>
+</ul>
+<div class="hlcode"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">requests</span> <span class="o">-</span><span class="n">i</span> <span class="n">http</span><span class="o">:</span><span class="c1">//e.pypi.python.org/simple</span>
+</pre></div>
+
+
+<p><em>注：1. 源路径要包含/simple部分；2. 使用pip时-i参数应放在install xxx的后面</em></p>
+<h3 id="easy_installpip">修改（若没有，则创建）easy_install/pip的配置文件</h3>
+<ul>
+<li>easy_install：在<code>~/.pydistutils.cfg</code>配置文件中写入如下内容：</li>
+</ul>
+<div class="hlcode"><pre><span class="k">[easy_install]</span>
+<span class="na">index_url</span> <span class="o">=</span> <span class="s">http://e.pypi.python.org/simple</span>
+</pre></div>
+
+
+<ul>
+<li>pip：在<code>~/.pip/pip.conf</code>配置文件中写入：</li>
+</ul>
+<div class="hlcode"><pre><span class="k">[global]</span>
+<span class="na">index-url</span> <span class="o">=</span> <span class="s">http://e.pypi.python.org/simple</span>
+</pre></div>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://github.com/tankywoo/yasimple_x2" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-11-16 16:26:32</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>

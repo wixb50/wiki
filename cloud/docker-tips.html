@@ -43,9 +43,6 @@
 </ul>
 <h2 id="docker">搭建docker私有仓库：</h2>
 <ul>
-<li>http://www.cnblogs.com/lienhua34/p/4922130.html  </li>
-<li>http://dockone.io/question/757  </li>
-<li>http://www.cnblogs.com/baxk/p/5225533.html (good)   </li>
 <li><a href="http://www.zimug.com/317.html">自己搭建registry v2</a> (OK)</li>
 <li><a href="https://github.com/kwk/docker-registry-frontend">私有仓库web-ui</a></li>
 <li><a href="https://github.com/vmware/harbor">vmware的开源私有仓库</a></li>
@@ -104,6 +101,23 @@
 
 <span class="err">$</span> <span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">network</span><span class="o">-</span><span class="n">manager</span> <span class="n">restart</span>
 </pre></div>
+
+
+<h2 id="docker0">自定义docker0网络</h2>
+<p>编辑<code>/etc/docker/daemon.json</code>文件,不存在则创建</p>
+<div class="hlcode"><pre><span class="p">{</span>
+  <span class="s">&quot;bip&quot;</span><span class="o">:</span> <span class="s">&quot;172.33.0.1/16&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>重启docker进程.</p>
+<h2 id="docker_7">创建自定义子网的docker网络</h2>
+<div class="hlcode"><pre><span class="n">docker</span> <span class="n">network</span> <span class="n">create</span> \
+  <span class="o">--</span><span class="n">driver</span> <span class="n">overlay</span> \
+  <span class="o">--</span><span class="n">subnet</span> <span class="mf">10.0.9.0</span><span class="o">/</span><span class="mi">24</span> \
+  <span class="n">my</span><span class="o">-</span><span class="n">multi</span><span class="o">-</span><span class="n">host</span><span class="o">-</span><span class="n">network</span>
+</pre></div>
   
 </div>
     </div>
@@ -112,12 +126,15 @@
         <p>
         Copyright © 2017 Elegancetse Tse.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
-        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        Theme by <a href="https://github.com/tankywoo/yasimple_x2" target="_blank">YASimple_X2</a>.
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2017-07-09 13:06:15</p>
+        <p>Site Generated 2017-11-16 16:26:32</p>
       </div> <!-- end footer-right -->
     </div>
+
+    
+    
   </body>
 </html>
