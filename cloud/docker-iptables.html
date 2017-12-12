@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>docker iptables - Wiki · Elegancetse Tse</title>
+    <meta name="keywords" content="wiki, makrdown, linux, python, ops, simiki"/>
+    <meta name="description" content="Stay hungry,Stay foolish."/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/wiki/">Wiki · Elegancetse Tse</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/wiki/#cloud">cloud</a>
+    &nbsp;&#187;&nbsp;docker iptables
+    <span class="updated">Updated&nbsp;
+    2017-16-26 16:32
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#iptablesdocker">使用iptables限制docker网络访问</a><ul>
+<li><a href="#iptables">常用iptables命令</a></li>
+<li><a href="#docker">限制docker容器访问外部网络</a></li>
+<li><a href="#docker_1">限制外部对docker容器的访问</a></li>
+</ul>
+</li>
+<li><a href="#_1">参考资料</a></li>
+</ul>
+</div>
+<h2 id="iptablesdocker">使用iptables限制docker网络访问</h2>
+<ol>
+<li>以下的限制只对docker0生效，即默认的<code>docker run</code>启动的容器；</li>
+<li>如果容器启动的时候指定了<code>--net</code>则需要限制对应的network网关；</li>
+<li>如果需要限制<code>docker swarm</code>启动的services，则需要对<code>docker_gwbridge</code>进行限制；</li>
+</ol>
+<h3 id="iptables">常用iptables命令</h3>
+<ul>
+<li>规则展示及筛选</li>
+</ul>
+<div class="hlcode"><pre><span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="err">#</span> <span class="err">所有规则</span>
+<span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">v</span> <span class="err">#</span> <span class="err">所有规则</span><span class="p">(</span><span class="err">详细信息</span><span class="p">)</span>
+<span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="n">INPUT</span> <span class="err">#</span> <span class="err">指定</span><span class="n">chain</span><span class="err">的规则</span>
+<span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="o">--</span><span class="n">line</span><span class="o">-</span><span class="n">numbers</span> <span class="err">#</span> <span class="err">显示</span><span class="n">line</span> <span class="n">number</span><span class="err">所有规则</span>
+</pre></div>
+
+
+<ul>
+<li>删除规则</li>
+</ul>
+<div class="hlcode"><pre><span class="n">iptables</span> <span class="o">-</span><span class="n">D</span> <span class="n">INPUT</span> <span class="mi">3</span> <span class="err">#</span> <span class="err">通过</span><span class="n">line</span> <span class="n">number</span><span class="err">删除规则</span>
+<span class="n">iptables</span> <span class="o">-</span><span class="n">D</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">m</span> <span class="n">conntrack</span> <span class="o">--</span><span class="n">ctstate</span> <span class="n">INVALID</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span> <span class="err">#</span> <span class="err">通过规则删除</span>
+<span class="n">iptables</span> <span class="o">-</span><span class="n">F</span> <span class="err">#</span> <span class="err">清空</span><span class="n">iptables</span><span class="err">规则</span>
+<span class="n">iptables</span> <span class="o">-</span><span class="n">F</span> <span class="n">INPUT</span> <span class="err">#</span> <span class="err">删除指定</span><span class="n">chain</span><span class="err">的所有规则</span>
+</pre></div>
+
+
+<h3 id="docker">限制docker容器访问外部网络</h3>
+<ul>
+<li>禁止容器访问局域网</li>
+</ul>
+<div class="hlcode"><pre><span class="n">iptables</span> <span class="o">-</span><span class="n">I</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">i</span> <span class="n">docker0</span> <span class="o">-</span><span class="n">d</span> <span class="mf">192.168.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span>
+<span class="cp"># 允许LAN网络连接容器(否则会被上一条拒绝)</span>
+<span class="n">iptables</span> <span class="o">-</span><span class="n">I</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">i</span> <span class="n">docker0</span> <span class="o">-</span><span class="n">d</span> <span class="mf">192.168.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="o">-</span><span class="n">m</span> <span class="n">state</span> <span class="o">--</span><span class="n">state</span> <span class="n">RELATED</span><span class="p">,</span><span class="n">ESTABLISHED</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
+</pre></div>
+
+
+<ul>
+<li>限制绑定到指定network的容器(bridge)网络访问</li>
+</ul>
+<div class="hlcode"><pre># 获取网关名称
+DOCKER_NET=&quot;my_network_name&quot;
+SUB_NET=`docker network inspect --format=&#39;{{range .IPAM.Config}}{{.Subnet}}{{end}}&#39; <span class="nv">$DOCKER_NET</span>`
+NET_GW=`ip route show <span class="nv">$SUB_NET</span> | cut -d\  -f3`
+# 设置访问白名单
+WHITE_LIST=(192.168.202.203 192.168.202.204)
+#WHITE_LIST=(`cat white_list.txt`) # 或者从文件读取
+iptables -I FORWARD -i <span class="nv">$NET_GW</span> -d 192.168.0.0/16 -j DROP
+for line in &quot;<span class="cp">${</span><span class="n">WHITE_LIST</span><span class="p">[</span><span class="err">@</span><span class="p">]</span><span class="cp">}</span>&quot;
+do
+  iptables -I FORWARD -i <span class="nv">$NET_GW</span> -d <span class="nv">$line</span> -j ACCEPT
+done
+</pre></div>
+
+
+<ul>
+<li>限制docker swarm启动的容器网络访问</li>
+</ul>
+<div class="hlcode"><pre><span class="n">NET_GW</span><span class="o">=</span><span class="s">&quot;docker_gwbridge&quot;</span>
+<span class="cp"># 设置访问白名单同上</span>
+</pre></div>
+
+
+<h3 id="docker_1">限制外部对docker容器的访问</h3>
+<ul>
+<li>限制部分ip访问容器</li>
+</ul>
+<p>仅公开访问http和https。<br />
+两个管理IP被授予访问所有正在运行的容器。<br />
+两个局域网IP被授予访问所有正在运行的容器。<br />
+其他一切都将被拒绝。</p>
+<table class="hlcodetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre></div></td><td class="code"><div class="hlcode"><pre><span class="c">#!/usr/bin/env bash</span>
+
+<span class="c"># Usage:</span>
+<span class="c"># timeout 10 docker_iptables.sh</span>
+<span class="c">#</span>
+<span class="c"># Use the builtin shell timeout utility to prevent infinite loop (see below)</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -x /usr/bin/docker <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">exit</span>
+<span class="k">fi</span>
+
+<span class="c"># Check if the PRE_DOCKER chain exists, if it does there&#39;s an existing reference to it.</span>
+iptables -C FORWARD -o docker0 -j PRE_DOCKER
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq 0 <span class="o">]</span>; <span class="k">then</span>
+    <span class="c"># Remove reference (will be re-added again later in this script)</span>
+    iptables -D FORWARD -o docker0 -j PRE_DOCKER
+    <span class="c"># Flush all existing rules</span>
+    iptables -F PRE_DOCKER
+<span class="k">else</span>
+    <span class="c"># Create the PRE_DOCKER chain</span>
+    iptables -N PRE_DOCKER
+<span class="k">fi</span>
+
+<span class="c"># Default action</span>
+iptables -I PRE_DOCKER -j DROP
+
+<span class="c"># Docker Containers Public Admin access (insert your IPs here)</span>
+iptables -I PRE_DOCKER -i eth0 -s 192.184.41.144 -j ACCEPT
+iptables -I PRE_DOCKER -i eth0 -s 120.29.76.14 -j ACCEPT
+
+<span class="c"># Docker Containers Restricted LAN Access (insert your LAN IP range or multiple IPs here)</span>
+iptables -I PRE_DOCKER -i eth1 -s 192.168.1.101 -j ACCEPT
+iptables -I PRE_DOCKER -i eth1 -s 192.168.1.102 -j ACCEPT
+
+<span class="c"># Docker internal use</span>
+iptables -I PRE_DOCKER -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+iptables -I PRE_DOCKER -i docker0 ! -o docker0 -j ACCEPT
+iptables -I PRE_DOCKER -m state --state RELATED -j ACCEPT
+iptables -I PRE_DOCKER -i docker0 -o docker0 -j ACCEPT
+
+<span class="c"># Docker container named www-nginx public access policy</span>
+<span class="nv">WWW_IP_CMD</span><span class="o">=</span><span class="s2">&quot;/usr/bin/docker inspect --format=&#39;{{.NetworkSettings.IPAddress}}&#39; www-nginx&quot;</span>
+<span class="nv">WWW_IP</span><span class="o">=</span><span class="k">$(</span><span class="nv">$WWW_IP_CMD</span><span class="k">)</span>
+
+<span class="c"># Double check, wait for docker socket (upstart docker.conf already does this)</span>
+<span class="k">while</span> <span class="o">[</span> ! -e <span class="s2">&quot;/var/run/docker.sock&quot;</span> <span class="o">]</span>; <span class="k">do </span><span class="nb">echo</span> <span class="s2">&quot;Waiting for /var/run/docker.sock...&quot;</span>; sleep 1; <span class="k">done</span>
+
+<span class="c"># Wait for docker web server container IP</span>
+<span class="k">while</span> <span class="o">[</span> -z <span class="s2">&quot;$WWW_IP&quot;</span> <span class="o">]</span>; <span class="k">do </span><span class="nb">echo</span> <span class="s2">&quot;Waiting for www-nginx IP...&quot;</span>; <span class="nv">WWW_IP</span><span class="o">=</span><span class="k">$(</span><span class="nv">$WWW_IP_CMD</span><span class="k">)</span>; <span class="k">done</span>
+
+<span class="c"># Insert web server container filter rules</span>
+iptables -I PRE_DOCKER -i eth0 -p tcp -d <span class="nv">$WWW_IP</span> --dport 80  -j ACCEPT
+iptables -I PRE_DOCKER -i eth0 -p tcp -d <span class="nv">$WWW_IP</span> --dport 443 -j ACCEPT
+
+<span class="c"># Finally insert the PRE_DOCKER table before the DOCKER table in the FORWARD chain.</span>
+iptables -I FORWARD -o docker0 -j PRE_DOCKER
+</pre></div>
+</td></tr></table>
+
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/27207397/disable-access-to-lan-from-docker-container">Disable access to LAN from docker container</a></li>
+<li><a href="http://rudijs.github.io/2015-07/docker-restricting-container-access-with-iptables/">docker-restricting-container-access-with-iptables</a></li>
+</ul>
+  
+</div>
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2017 Elegancetse Tse.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://github.com/tankywoo/yasimple_x2" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2017-12-12 10:49:24</p>
+      </div> <!-- end footer-right -->
+    </div>
+
+    
+    
+  </body>
+</html>
